@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.title {
+  text-align: center;
+  font-size: 40rpx;
+  margin-bottom: 20rpx; }
+.detail {
+  text-align: center;
+  font-size: 25rpx;
+  height: 20vh; }
+.detail .detail_info {
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* 这里控制行数 */
+    -webkit-box-orient: vertical; }
+.link {
+  text-decoration: underline;
+  text-align: center;
+  color: #3cc51f; }
+.link:hover {
+  color: #113809; }
+

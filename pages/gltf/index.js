@@ -82,6 +82,11 @@ Page({
 		let {camera, controls} = this.data.ThreeModule;
 		camera.position.set(0,30,0);
 		controls.update();
+		setTimeout(()=>{
+			wx.navigateTo({
+				url:"/pages/info/index?name="+query
+			})
+		},500)
 	},
   changeShowStatus(){
 
