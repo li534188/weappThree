@@ -1,0 +1,15 @@
+<view style="height: 100%; width: 100%;">
+    <cover-view wx:if="{{show}}" class="wrappr">
+        <cover-view > header</cover-view>
+        <cover-view > body </cover-view>
+        <cover-view > body </cover-view>
+        <cover-view > body </cover-view>
+        <cover-view > body </cover-view>
+    </cover-view>
+    <button bindtap="changeShowStatus">123</button>
+    <view class="flex_parent" >
+        <button wx:for="{{brainInfo}}" class="mini-btn"  type="primary" size="mini" bindtap="clickButton" data-id="{{item.id}}">{{item.title}}</button>
+    </view>
+    <canvas type="webgl" id="c" style="width: 100%; height:100vh;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindtouchcancel="touchCancel" bindlongtap="longTap" bindtap="tap">
+    </canvas>
+</view>

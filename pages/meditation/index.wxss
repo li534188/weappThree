@@ -1,0 +1,152 @@
+@charset "UTF-8";
+.indexClass {
+  background-color: lightblue; }
+.btn-area {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-justify-content: start;
+      -ms-flex-pack: start;
+          justify-content: start; }
+.btn-area .navigator {
+    width: 70%;
+    border: 5rpx solid lightblue; }
+/* basic menu styles */
+.nav-menu {
+  display: block;
+  /* background: #74adaa;*/
+  width: 950rpx;
+  margin: 50rpx auto 150rpx; }
+.nav-menu > .navigator {
+  display: inline;
+  float: left;
+  border-right: 1rpx solid #94c0be; }
+.nav-menu > .navigator:last-child {
+  border-right: none; }
+.nav-menu .navigator a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  /*调用本地字体*/
+  font-family: sansationregular;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  text-transform: capitalize;
+  overflow: visible;
+  line-height: 20rpx;
+  font-size: 20rpx;
+  padding: 15rpx 30rpx 15rpx 31rpx; }
+.navigator {
+  /* 任务三、设置3D舞台布景 */
+  -webkit-perspective: 200rpx;
+  -ms-perspective: 200rpx;
+  -o-perspective: 200rpx;
+  perspective: 200rpx;
+  /*任务四、设置3D舞台布景过渡效果*/
+  -webkit-transition: all .07s linear;
+  -o-transition: all .07s linear;
+  -webkit-transition: all .7s linear;
+  -o-transition: all .7s linear;
+  transition: all .7s linear;
+  position: relative; }
+.navigator-active {
+  cursor: pointer; }
+/*任务五、给不是当前状态的3D舞台的悬浮与聚焦状态设置变形效果*/
+.navigator-active .navigator-box, .navigator:not(.active):focus .navigator-box {
+  -wekbit-transform: translateZ(-25rpx) rotateX(90deg);
+  -ms-transform: translateZ(-25rpx) rotateX(90deg);
+  -webkit-transform: translateZ(-25rpx) rotateX(90deg);
+          transform: translateZ(-25rpx) rotateX(90deg);
+  /*    -webkit-transform:rotateX(90deg) translatez(-25px);*/
+  /*   -webkit-transform:rotatex(90deg);*/ }
+.navigator-box {
+  /*任务六、给3D舞台中“.navigator-box”设置过渡与变形效果*/
+  -webkit-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  -webkit-transform: translatez(-25rpx);
+  -ms-transform: translatez(-25rpx);
+  transform: translatez(-25rpx);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  -ms-pointer-events: none;
+  -o-pointer-events: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%; }
+/*任务七、给导航设置3D前，与3D后变形效果*/
+.front {
+  -webkit-transform: rotatex(0deg) translatez(25rpx);
+  -ms-transform: rotatex(0deg) translatez(25rpx);
+  transform: rotatex(0deg) translatez(25rpx); }
+.back {
+  -webkit-transform: rotatex(-90deg) translatez(25rpx);
+  -ms-transform: rotatex(-90deg) translatez(25rpx);
+  transform: rotatex(-90deg) translatez(25rpx);
+  color: #FFE7C4; }
+.front, .back {
+  /*          border:1px solid red;*/
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #74adaa;
+  padding: 15rpx 30rpx 15rpx 31rpx;
+  color: white;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  -ms-pointer-events: none;
+  -o-pointer-events: none;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+/*任务八、设置导航当前状态与悬浮状态下的背景效果*/
+.nav-menu .navigator .active .front, .nav-menu .navigator .active .back, .nav-menu .navigator a:hover .front, .nav-menu .navigator a:hover .back {
+  background-color: #51938f;
+  background-size: 5rpx 5rpx;
+  background-position: 0 0, 30rpx 30rpx;
+  background-image: -webit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), -webkit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: -webit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), -o-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: -webit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: -o-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), -webkit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: -o-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), -o-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: -o-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: -webkit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), -webkit-linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480);
+  background-image: linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480), linear-gradient(45deg, #478480 25%, transparent 25%, transparent 75%, #478480 75%, #478480); }
+.nav-menu ul {
+  position: absolute;
+  text-align: left;
+  line-height: 40rpx;
+  font-size: 14rpx;
+  width: 200rpx;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+/*任务九、显示下拉导航菜单，并其设置一个变形效果*/
+.nav-menu > .navigator:hover ul {
+  -webkit-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  transform: rotateX(0deg); }
+

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "modal":"../component",
+    "mp-halfScreenDialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
+  },
+  "disableScroll": true
+}
