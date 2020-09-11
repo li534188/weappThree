@@ -308,6 +308,97 @@ export default function (canvas, THREE) {
       console.log('loading')
     });
   }
+  
+
+  let infodata = [{
+		title:'视觉联络区',
+		info:'主要的视觉区',
+    id:'vision',
+    position:{x:-1,y:11,z:3},
+    color:0xEC3C00
+	},{
+		title:'主要运动区',
+		info:'管理运动',
+    id:'motion',
+    position:{x:-1,y:12,z:0,},
+    rotation:{x:Math.PI * -.5},
+    color:0x030c36
+	},{
+		title:'听觉联络区',
+		info:'主要的视觉区',
+    id:'hearing',
+    position:{x:3,y:8,z:0},
+    rotation:{y:Math.PI * .5},
+    color:0xBFED00
+	},{
+		title:'额叶',
+		info:'主要的视觉区',
+    id:'lobe',
+    position:{x:1,y:8,z:-4},
+    rotation:{y:Math.PI },
+    color:0xf5f5f5
+	},{
+		title:'小脑',
+		info:'主要的视觉区',
+    id:'cerebellum',
+    position:{x:-1,y:5,z:-3},
+    rotation:{y:Math.PI },
+    color:0x030c36
+  },];
+  let  group = new THREE.Group();
+  {
+    let loader =new THREE.FontLoader().load('http://localhost:3000/FZFangSong-Z02T_Regular.json',function(font){
+      infodata.map(item=>{
+        var txtGeo = new THREE.TextGeometry(item.title,{
+          font: font,
+          size: 0.4,
+          height: 0.1,
+          curveSegments: 12,
+          
+        });
+　      var txtMater = new THREE.MeshPhongMaterial({color: item.color});
+        var txtMesh = new THREE.Mesh(txtGeo,txtMater);
+        txtMesh.position.set(item.position.x,item.position.y,item.position.z);
+        if(item.rotation){
+          txtMesh.rotation.set(item.rotation.x||0, item.rotation.y||0,item.rotation.z||0 )
+          console.log(txtMesh.rotation)
+        }
+        txtMesh.name = item.id
+        group.add(txtMesh)
+        
+      });
+      scene.add(group);
+    })
+      　
+  }
+
+  const mousedown = (e) =>{
+
+    let raycaster = new THREE.Raycaster();
+    let mouse = new THREE.Vector2();
+    let touch = e.touches[0];
+    console.log(touch)
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(touch.clientX , res.screenWidth)
+        mouse.x = (touch.clientX / res.screenWidth) * 2 -1 ;
+        mouse.y = -(touch.clientY / res.screenHeight) * 2 +1;
+        console.log(mouse)
+        let vector = new THREE.Vector3(mouse.x, mouse.y,0.5).unproject(camera);
+        let objects = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+        var intersects = raycaster.intersectObjects(objects);
+        console.log(group.children)
+        console.log(intersects)
+        console.log(9999)
+        if (intersects.length > 0) {
+          console.log(intersects[0].object.name)
+        }
+      }
+    });
+    
+  }
+
+
 
   function resizeRendererToDisplaySize(renderer) {
     const canvas = renderer.domElement;
@@ -365,5 +456,5 @@ export default function (canvas, THREE) {
 
   canvas.requestAnimationFrame(render);
 
-  return {camera, controls};
+  return {camera, controls, mousedown};
 }

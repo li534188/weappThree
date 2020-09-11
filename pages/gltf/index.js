@@ -1,5 +1,6 @@
 import * as THREE from '../../libs/three.weapp.js'
 import loadgLTF from './loadgLTF'
+import dataInfo from './data'
 
 Page({
 	data: {brainInfo:[{
@@ -77,16 +78,26 @@ Page({
 	tap(e) {
 		// console.log('canvas', e)
 	},
+	mouseDown(e){
+		let {mousedown} = this.data.ThreeModule;
+		console.log(e)
+		mousedown(e)
+	},
 	clickButton(e){
 		let query = e.currentTarget.dataset['id'];
 		let {camera, controls} = this.data.ThreeModule;
-		camera.position.set(0,30,0);
-		controls.update();
-		setTimeout(()=>{
-			wx.navigateTo({
-				url:"/pages/info/index?name="+query
-			})
-		},500)
+		dataInfo.map(item =>{
+			if(item.id === query){
+				camera.position.set(item.camera.x,item.camera.y,item.camera.z);
+				controls.update();
+				// setTimeout(()=>{
+				// 	wx.navigateTo({
+				// 		url:"/pages/info/index?name="+query
+				// 	})
+				// },1000)
+			}
+		})
+		
 	},
   changeShowStatus(){
 
